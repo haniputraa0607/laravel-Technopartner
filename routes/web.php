@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\{Route,Auth};
-use App\Http\Controllers\{HomeController};
+use App\Http\Controllers\{HomeController, CategoriesController, TransactionsController};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +17,5 @@ use App\Http\Controllers\{HomeController};
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource("companies", CategoriesController::class);
-Route::resource("employees", TransactionsController::class);
+Route::resource("categories", CategoriesController::class);
+Route::resource("transactions", TransactionsController::class);
