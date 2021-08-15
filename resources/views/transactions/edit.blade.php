@@ -63,7 +63,7 @@
                         <div class="form-group row">
                           <label for="tanggal" class="col-sm-3 col-form-label">Pada Tanggal</label>
                           <div class="col-sm-9">
-                            <input type="datetime-local" placeholder="time" value="{{old('date')?old('date') : $date}}" class="form-control" id="date" name="date">
+                            <input type="datetime-local" placeholder="time" value="{{old('date')?old('date') : $transaction->date}}" class="form-control" id="date" name="date">
                           </div>
                         </div>
                         <div class="form-group row">
