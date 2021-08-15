@@ -13,11 +13,11 @@
                           <div class="form-group row">
                             <label for="inputCompanyName" class="ml-3 col-form-label">Dari</label>
                             <div class="col-sm-3 px-0 mx-3">
-                              <input type="date" class="form-control" id="company_name" name="date1">
+                              <input type="datetime-local" class="form-control" id="company_name" name="date1">
                             </div>
                             <label for="inputCompanyName" class="ml-1 col-form-label">Sampai</label>
                             <div class="col-sm-3 px-0 mx-3">
-                              <input type="date" class="form-control" id="company_name" name="date2">
+                              <input type="datetime-local" class="form-control" id="company_name" name="date2">
                             </div>
                             <button type="submit" class="btn btn-primary ml-1">Submit</button>
                           </div>

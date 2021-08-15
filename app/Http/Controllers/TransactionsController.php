@@ -82,8 +82,14 @@ class TransactionsController extends Controller
      */
     public function show(Transaction $transaction)
     {
+        $date = Carbon::parse($transaction->date)->format('d/m/Y h.i');
+        // dd($date);
         $categories = Category::all();
-        return view('transactions.edit', ["transaction" => $transaction,"categories"=>$categories]);
+        return view('transactions.edit', [
+            "transaction" => $transaction,
+            "categories"=>$categories,
+            "date"=>$date,
+        ]);
     }
 
     /**
@@ -118,15 +124,13 @@ class TransactionsController extends Controller
         if($request->date){
             $date = $request->date;
         } else{
-            $date = Carbon::now()->format('Y-m-d');
+            $date = Carbon::now();
         }
         Transaction::where("id_transaksi", $transaction->id_transaksi)->update([
             "id_kategori" => $request->id_kategori,
             "nominal_trans" => $request->nominal_trans,
             "deskripsi" => $deskripsi,
             "date" => $date,
-            "created_at" => Carbon::now()->format('Y-m-d'),
-            "updated_at" => Carbon::now()->format('Y-m-d'),
         ]);
         return redirect("/transactions")->with(
             "status",
