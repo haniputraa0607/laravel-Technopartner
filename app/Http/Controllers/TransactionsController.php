@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TransactionsController extends Controller
 {
@@ -44,20 +45,28 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $request->validate([
             "id_kategori" => "required",
-            "nominal_trans" => "required",
+            "nominal_trans" => "required"
         ]);
         if($request->deskripsi){
             $deskripsi = $request->deskripsi;
         } else{
             $deskripsi = 'Tidak Teriisi';
         }
+        if($request->date){
+            $date = $request->date;
+        } else{
+            $date = Carbon::now()->format('Y-m-d');
+        }
         Transaction::create([
             "id_kategori" => $request->id_kategori,
             "nominal_trans" => $request->nominal_trans,
             "deskripsi" => $deskripsi,
+            "date" => $date,
+            "created_at" => Carbon::now()->format('Y-m-d'),
+            "updated_at" => Carbon::now()->format('Y-m-d'),
         ]);
         return redirect("/transactions")->with(
             "status",

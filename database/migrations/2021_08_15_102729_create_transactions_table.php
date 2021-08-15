@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('id_kategori');
             $table->string('nominal_trans');
             $table->string('deskripsi');
+            $table->date('date');
             $table->date('created_at');
             $table->date('updated_at');
         });

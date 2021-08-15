@@ -11,7 +11,7 @@ class RangeController extends Controller
 {
     public function range(Request $request)
     {
-        $tanggal_awal = Carbon::createFromFormat('d/m/Y HH:mm:ss',$request->date1);
+        $tanggal_awal = $request->date1;
         $tanggal_akhir = $request->date2;
         dd($tanggal_awal);
         $data = Transaction::join('categories', 'transactions.id_kategori', '=', 'categories.id_kategori')

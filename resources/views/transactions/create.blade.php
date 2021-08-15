@@ -53,6 +53,12 @@
                           </div>
                         </div>
                         <div class="form-group row">
+                          <label for="tanggal" class="col-sm-3 col-form-label">Pada Tanggal</label>
+                          <div class="col-sm-9">
+                            <input type="date" value ="<?php echo date('now') ?>"class="form-control" id="company_name" name="date">
+                          </div>
+                        </div>
+                        <div class="form-group row">
                           <label for="inputDeskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" value="{{old('deskripsi')}}">
