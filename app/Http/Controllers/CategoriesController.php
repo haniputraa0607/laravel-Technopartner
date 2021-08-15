@@ -28,7 +28,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -39,7 +39,10 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nama_kategori" => "required",
+            "jenis_kategori" => "required",
+        ]);
     }
 
     /**
