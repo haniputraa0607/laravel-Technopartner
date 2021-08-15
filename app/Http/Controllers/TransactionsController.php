@@ -20,7 +20,7 @@ class TransactionsController extends Controller
     public function index()
     {
         $transactions = Transaction::join('categories', 'transactions.id_kategori', '=', 'categories.id_kategori')
-               ->paginate(5,['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
+               ->get(['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
         return view('transactions.index', compact('transactions'));
     }
 

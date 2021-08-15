@@ -10,7 +10,6 @@
                     <table class="table text-center">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Total Pemasukan</th>
                             <th scope="col">Total Pengeluaran</th>
                             <th scope="col">Saldo Saat Ini</th>
@@ -18,10 +17,9 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <th></th>
-                            <td>6000000</td>
-                            <td>5000000</td>
-                            <td>1000000</td>
+                            <td>{{ $data["pemasukan"] }}</td>
+                            <td>{{ $data["pengeluaran"] }}</td>
+                            <td>{{ $data["saldo"] }}</td>
                           </tr>
                         </tbody>
                     </table>
