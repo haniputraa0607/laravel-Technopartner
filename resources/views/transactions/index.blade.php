@@ -9,7 +9,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-5 mt-0">
-                      <a class="btn btn-light mb-2" href="/categories/create" role="button">Tambah Transaksi</a>
+                      <a class="btn btn-light mb-2" href="/transactions/create" role="button">Tambah Transaksi</a>
                     </div>
                     <div class="col">
                       <div>

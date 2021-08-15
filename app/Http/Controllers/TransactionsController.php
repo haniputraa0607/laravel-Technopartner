@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class TransactionsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('transactions.create', compact("categories"));
     }
 
     /**
@@ -39,7 +41,15 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "id_kategori" => "required",
+            "nominal_trans" => "required",
+        ]);
+        // Employee::create($request->all());
+        // return redirect("/employees")->with(
+        //     "status",
+        //     "A New Employee has been added"
+        // );
     }
 
     /**
