@@ -68,7 +68,7 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.detail', compact('category'));
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -91,7 +91,24 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            "nama_kategori" => "required",
+            "jenis_kategori" => "required",
+        ]);
+        if($request->deskripsi){
+            $deskripsi = $request->deskripsi;
+        } else{
+            $deskripsi = 'Tidak Teriisi';
+        }
+        Category::where("id_kategori", $category->id_kategori)->update([
+            "nama_kategori" => $request->nama_kategori,
+            "jenis_kategori" => $request->jenis_kategori,
+            "deskripsi" => $deskripsi,
+        ]);
+        return redirect("/categories")->with(
+            "status",
+            "$category->nama_kategori telah diubah"
+        );
     }
 
     /**
