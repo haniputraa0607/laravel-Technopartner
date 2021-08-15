@@ -19,7 +19,7 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $month = Carbon::now()->format('m');
         $bulan = Carbon::now()->isoFormat('MMMM');
@@ -62,6 +62,7 @@ class TransactionsController extends Controller
         } else{
             $date = Carbon::now();
         }
+        // dd($date);
         Transaction::create([
             "id_kategori" => $request->id_kategori,
             "nominal_trans" => $request->nominal_trans,
@@ -82,13 +83,12 @@ class TransactionsController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        $date = Carbon::parse($transaction->date)->format('d/m/Y h.i');
+        // $date = Carbon::parse($transaction->date)->format('Y-m-dh:i');
         // dd($date);
         $categories = Category::all();
         return view('transactions.edit', [
             "transaction" => $transaction,
             "categories"=>$categories,
-            "date"=>$date,
         ]);
     }
 
