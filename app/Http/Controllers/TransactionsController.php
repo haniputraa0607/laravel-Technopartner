@@ -105,6 +105,10 @@ class TransactionsController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        Transaction::destroy($transaction->id_transaksi);
+        return redirect("/transactions")->with(
+            "status",
+            "Sebuah Transaksi telah dihapus"
+        ); 
     }
 }

@@ -57,7 +57,7 @@
                                 <a href="" class="badge badge-primary">Edit</a>
                             </td>
                             <td>
-                              <form action="/categories/{{$transaction->id_transaction}}" method="post" class="d-inline">
+                              <form action="/transactions/{{$transaction->id_transaksi}}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="button_a badge badge-danger">Delete</button>
