@@ -33,7 +33,7 @@
                               <a href="/categories/{{$category->id_kategori}}" class="badge badge-primary">Edit</a>
                             </td>
                             <td>
-                              <form action="/employees/{{$category->id_kategori}}" method="post" class="d-inline">
+                              <form action="/categories/{{$category->id_kategori}}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="button_a badge badge-danger">Delete</button>

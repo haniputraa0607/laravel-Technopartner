@@ -119,6 +119,10 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id_kategori);
+        return redirect("/categories")->with(
+            "status",
+            "Sebuah Kategori telah dihapus"
+        ); 
     }
 }
