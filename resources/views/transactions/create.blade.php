@@ -55,7 +55,7 @@
                         <div class="form-group row">
                           <label for="tanggal" class="col-sm-3 col-form-label">Pada Tanggal</label>
                           <div class="col-sm-9">
-                            <input type="date" value ="<?php echo date('now') ?>"class="form-control" id="company_name" name="date">
+                            <input type="datetime-local" value ="{{old('date')}}"class="form-control" id="company_name" name="date">
                           </div>
                         </div>
                         <div class="form-group row">

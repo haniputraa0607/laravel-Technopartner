@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TransactionsController extends Controller
 {
@@ -20,10 +21,11 @@ class TransactionsController extends Controller
      */
     public function index(Request $request)
     {
-        // dump($request);
+        $month = Carbon::now()->format('m');
+        $bulan = Carbon::now()->isoFormat('MMMM');
         $transactions = Transaction::join('categories', 'transactions.id_kategori', '=', 'categories.id_kategori')
-               ->get(['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
-        return view('transactions.index', compact('transactions'));
+        ->whereMonth('date', $month)->get(['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
+        return view('transactions.index', ["transactions" => $transactions,"bulan"=>$bulan]);
     }
 
     /**
@@ -58,15 +60,13 @@ class TransactionsController extends Controller
         if($request->date){
             $date = $request->date;
         } else{
-            $date = Carbon::now()->format('Y-m-d');
+            $date = Carbon::now();
         }
         Transaction::create([
             "id_kategori" => $request->id_kategori,
             "nominal_trans" => $request->nominal_trans,
             "deskripsi" => $deskripsi,
             "date" => $date,
-            "created_at" => Carbon::now()->format('Y-m-d'),
-            "updated_at" => Carbon::now()->format('Y-m-d'),
         ]);
         return redirect("/transactions")->with(
             "status",

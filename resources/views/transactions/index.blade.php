@@ -5,12 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Transaksi') }}</div>
+                <div class="card-header">{{ __('Transaksi Bulan ') }} {{ $bulan }}</div>
                 <div class="card-body">
-                    
                       <a class="btn btn-light mb-2" href="/transactions/create" role="button">Tambah Transaksi</a>
-                    
-                    
                         <form action="/range" method="post">
                           @csrf
                           <div class="form-group row">
