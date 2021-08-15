@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CategoriesController extends Controller
 {
@@ -53,6 +54,7 @@ class CategoriesController extends Controller
             "nama_kategori" => $request->nama_kategori,
             "jenis_kategori" => $request->jenis_kategori,
             "deskripsi" => $deskripsi,
+            "created_at" => Carbon::now()->format('Y-m-d'),
         ]);
         return redirect("/categories")->with(
             "status",

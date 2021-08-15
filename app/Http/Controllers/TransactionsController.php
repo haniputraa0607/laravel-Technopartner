@@ -17,8 +17,9 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dump($request);
         $transactions = Transaction::join('categories', 'transactions.id_kategori', '=', 'categories.id_kategori')
                ->get(['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
         return view('transactions.index', compact('transactions'));
@@ -43,6 +44,7 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             "id_kategori" => "required",
             "nominal_trans" => "required",

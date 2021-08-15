@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\{Route,Auth};
-use App\Http\Controllers\{HomeController, CategoriesController, TransactionsController};
+use App\Http\Controllers\{HomeController, CategoriesController, RangeController, TransactionsController};
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,5 @@ use App\Http\Controllers\{HomeController, CategoriesController, TransactionsCont
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource("categories", CategoriesController::class);
+Route::post("/range", [RangeController::class, "range"]);
 Route::resource("transactions", TransactionsController::class);

@@ -18,7 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('nama_kategori');
             $table->string('jenis_kategori');
             $table->string('deskripsi');
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
