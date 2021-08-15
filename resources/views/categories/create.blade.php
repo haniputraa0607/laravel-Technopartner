@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Kategori') }}</div>
                 <div class="card-body">
                   <h1 class="h4 mb-4 text-gray-800">Tambah Kategori</h1>
-                      <form action="/categories" method="POST" enctype="multipart/form-data">
+                      <form action="/categories" method="POST">
                         @csrf
                         <div class="form-group row">
                           <label for="inputNamaKategori" class="col-sm-3 col-form-label">Nama Kategori</label>
@@ -31,7 +31,7 @@
                               <option value="Pengeluaran" <?php if(old('jenis_kategori') == 'Pengeluaran'){ echo 'selected'; } ?>>Pengeluaran</option>
                             <?php 
                             }else{
-                                echo'<option value="" selected>Company Name</option>';
+                                echo'<option value="" selected>Pilih Kategori</option>';
                                 echo'<option value="Pemasukan" >Pemasukan</option>';
                                 echo'<option value="Pengeluaran" >Pengeluaran</option>';
                               }
@@ -43,9 +43,9 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="inputNamaKategori" class="col-sm-3 col-form-label">Deskripsi</label>
+                          <label for="inputDeskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Deskripsi" value="{{old('nama_kategori')}}">
+                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" value="{{old('deskripsi')}}">
                           </div>
                         </div>
                         <div class="form-group row">

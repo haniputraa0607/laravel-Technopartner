@@ -43,6 +43,21 @@ class CategoriesController extends Controller
             "nama_kategori" => "required",
             "jenis_kategori" => "required",
         ]);
+        if($request->deskripsi){
+            $deskripsi = $request->deskripsi;
+        } else{
+            $deskripsi = 'Tidak Teriisi';
+        }
+        Category::create([
+            "nama_kategori" => $request->nama_kategori,
+            "jenis_kategori" => $request->jenis_kategori,
+            "deskripsi" => $deskripsi,
+        ]);
+        return redirect("/categories")->with(
+            "status",
+            "Kategori baru telah ditambahkan"
+        );
+
     }
 
     /**
