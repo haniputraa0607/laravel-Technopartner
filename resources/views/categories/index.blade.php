@@ -19,26 +19,28 @@
                             <th scope="col">#</th>
                             <th scope="col">Nama Kategori</th>
                             <th scope="col">Macam</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Hapus</th>
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach ($categories as $category)
                           <tr>
-                            <th>1</th>
-                            <td>Gaji</td>
-                            <td>Pemasukan</td>
+                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $category->nama_kategori }}</td>
+                            <td>{{ $category->jenis_kategori }}</td>
                             <td>
-                                <a href="" class="badge badge-primary">Detail</a>
+                              <a href="/categories/{{$category->id_kategori}}" class="badge badge-primary">Edit</a>
+                            </td>
+                            <td>
+                              <form action="/employees/{{$category->id_kategori}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="button_a badge badge-danger">Delete</button>
+                              </form>
                             </td>
                           </tr>
-                          <tr>
-                            <th>2</th>
-                            <td>Makan</td>
-                            <td>Pengeluaran</td>
-                            <td>
-                                <a href="" class="badge badge-primary">Detail</a>
-                            </td>
-                          </tr>
+                          @endforeach
                         </tbody>
                     </table>
                 </div>

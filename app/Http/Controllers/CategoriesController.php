@@ -18,7 +18,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('categories.index');
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -57,7 +58,6 @@ class CategoriesController extends Controller
             "status",
             "Kategori baru telah ditambahkan"
         );
-
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.detail', compact('category'));
     }
 
     /**
