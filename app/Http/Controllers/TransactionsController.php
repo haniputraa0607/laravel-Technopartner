@@ -115,10 +115,18 @@ class TransactionsController extends Controller
         } else{
             $deskripsi = 'Tidak Teriisi';
         }
+        if($request->date){
+            $date = $request->date;
+        } else{
+            $date = Carbon::now()->format('Y-m-d');
+        }
         Transaction::where("id_transaksi", $transaction->id_transaksi)->update([
             "id_kategori" => $request->id_kategori,
             "nominal_trans" => $request->nominal_trans,
             "deskripsi" => $deskripsi,
+            "date" => $date,
+            "created_at" => Carbon::now()->format('Y-m-d'),
+            "updated_at" => Carbon::now()->format('Y-m-d'),
         ]);
         return redirect("/transactions")->with(
             "status",
