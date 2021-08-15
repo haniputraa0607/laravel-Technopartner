@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Kategori') }}</div>
                 <div class="card-body">
-                  <h1 class="h4 mb-4 text-gray-800">Tambah Kategori</h1>
+                  <h1 class="h4 mb-4 text-gray-800">Edit Kategori</h1>
                       <form action="/categories/{{$category->id_kategori}}" method="POST">
                         @method('patch')
                         @csrf

@@ -71,7 +71,8 @@ class TransactionsController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        $categories = Category::all();
+        return view('transactions.edit', ["transaction" => $transaction,"categories"=>$categories]);
     }
 
     /**
@@ -94,7 +95,24 @@ class TransactionsController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $request->validate([
+            "id_kategori" => "required",
+            "nominal_trans" => "required",
+        ]);
+        if($request->deskripsi){
+            $deskripsi = $request->deskripsi;
+        } else{
+            $deskripsi = 'Tidak Teriisi';
+        }
+        Transaction::where("id_transaksi", $transaction->id_transaksi)->update([
+            "id_kategori" => $request->id_kategori,
+            "nominal_trans" => $request->nominal_trans,
+            "deskripsi" => $deskripsi,
+        ]);
+        return redirect("/transactions")->with(
+            "status",
+            "Sebuah Transaksi telah diubah"
+        );
     }
 
     /**

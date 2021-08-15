@@ -54,7 +54,7 @@
                             <td>{{ $transaction->jenis_kategori }}</td>
                             <td>{{ $transaction->nominal_trans }}</td>
                             <td>
-                                <a href="" class="badge badge-primary">Edit</a>
+                                <a href="/transactions/{{$transaction->id_transaksi}}" class="badge badge-primary">Edit</a>
                             </td>
                             <td>
                               <form action="/transactions/{{$transaction->id_transaksi}}" method="post" class="d-inline">
