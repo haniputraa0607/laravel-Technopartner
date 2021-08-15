@@ -46,7 +46,7 @@
                         <div class="form-group row">
                           <label for="inputNominal" class="col-sm-3 col-form-label">Nominal Transaksi</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control @error('nominal_trans') is-invalid @enderror" id="nominal_trans" name="nominal_trans" placeholder="Nama Kategori" value="{{old('nominal_trans')}}">
+                            <input type="text" class="form-control @error('nominal_trans') is-invalid @enderror" id="nominal_trans" name="nominal_trans" placeholder="Nominal Transaksi" value="{{old('nominal_trans')}}">
                             @error('nominal_trans')
                               <div class="invalid-feedback">{{$message}}</div>
                             @enderror

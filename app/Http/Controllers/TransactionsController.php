@@ -19,7 +19,9 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        return view('transactions.index');
+        $transactions = Transaction::join('categories', 'transactions.id_kategori', '=', 'categories.id_kategori')
+               ->paginate(5,['transactions.*', 'categories.nama_kategori', 'categories.jenis_kategori']);
+        return view('transactions.index', compact('transactions'));
     }
 
     /**
@@ -45,11 +47,20 @@ class TransactionsController extends Controller
             "id_kategori" => "required",
             "nominal_trans" => "required",
         ]);
-        // Employee::create($request->all());
-        // return redirect("/employees")->with(
-        //     "status",
-        //     "A New Employee has been added"
-        // );
+        if($request->deskripsi){
+            $deskripsi = $request->deskripsi;
+        } else{
+            $deskripsi = 'Tidak Teriisi';
+        }
+        Transaction::create([
+            "id_kategori" => $request->id_kategori,
+            "nominal_trans" => $request->nominal_trans,
+            "deskripsi" => $deskripsi,
+        ]);
+        return redirect("/transactions")->with(
+            "status",
+            "Transaksi baru telah ditambahkan"
+        );
     }
 
     /**

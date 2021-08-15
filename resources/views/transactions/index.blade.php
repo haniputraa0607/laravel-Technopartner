@@ -42,28 +42,29 @@
                             <th scope="col">Transaksi</th>
                             <th scope="col">Jenis Transaksi</th>
                             <th scope="col">Nominal</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Hapus</th>
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach ($transactions as $transaction)
                           <tr>
-                            <th>1</th>
-                            <td>Gaji</td>
-                            <td>Pemasukan</td>
-                            <td>5000000</td>
+                            <th>{{ $loop->iteration }}</th>
+                            <td>{{ $transaction->nama_kategori }}</td>
+                            <td>{{ $transaction->jenis_kategori }}</td>
+                            <td>{{ $transaction->nominal_trans }}</td>
                             <td>
-                                <a href="" class="badge badge-primary">Detail</a>
+                                <a href="" class="badge badge-primary">Edit</a>
+                            </td>
+                            <td>
+                              <form action="/categories/{{$transaction->id_transaction}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="button_a badge badge-danger">Delete</button>
+                              </form>
                             </td>
                           </tr>
-                          <tr>
-                            <th>2</th>
-                            <td>Makan</td>
-                            <td>Pengeluaran</td>
-                            <td>400000</td>
-                            <td>
-                                <a href="" class="badge badge-primary">Detail</a>
-                            </td>
-                          </tr>
+                          @endforeach
                         </tbody>
                     </table>
                 </div>
